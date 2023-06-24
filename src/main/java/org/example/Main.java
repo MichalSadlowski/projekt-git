@@ -1,19 +1,32 @@
-package org.example;
+package com.example.test;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import com.example.animals.Animal;
+import com.example.animals.mammals.Dog;
+import com.example.animals.birds.Parrot;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+/**
+ * Klasa główna służąca do testowania funkcjonalności klas związanych z zwierzętami.
+ */
 public class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Animal dog = new Dog("Buddy", 5, "Labrador");
+        dog.displayInfo();
+        dog.makeSound();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Animal parrot = new Parrot("Polly", 3, "Green");
+        parrot.displayInfo();
+        parrot.makeSound();
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        Dog dog2 = (Dog) dog;
+        dog2.fetch();
+
+        Parrot parrot2 = (Parrot) parrot;
+        parrot2.mimicHumanSpeech();
+
+        logger.info("Program executed successfully.");
     }
 }
